@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PageDefault from '../../../components/PageDefault'
 import { Link } from 'react-router-dom';
 import FormField from '../../../components/Carousel/components/FormField';
+import Button from '../../../components/Button';
 
 function CadastroCategoria() {
     // vindo um array ao fazer a variável entre []
@@ -17,17 +18,21 @@ function CadastroCategoria() {
     const [values, setValues] = useState(valoresIniciais);
 
 
-    function handleChange(event) {
-        const { getAttribute, value } = event.target;
-        setValue(getAttribute('name'), value);
-    }
-
     function setValue(chave, valor) {
+        // chave: nome, descricao, bla, bli
         setValues({
-            ...values,
-            [chave]: valor, // nome: 'valor'
+          ...values,
+          [chave]: valor, // nome: 'valor'
         })
-    }
+      }
+      
+    function handleChange(infosDoEvento) {
+        setValue(
+          infosDoEvento.target.getAttribute('name'),
+          infosDoEvento.target.value
+        );
+      }
+
 
     return (
         <PageDefault>
@@ -66,8 +71,8 @@ function CadastroCategoria() {
                     type="color"
                     name="cor" />
 
-                <div>
-{/* 
+                {/* <div> */}
+                    {/* 
 
                     <label>
                         Descrição
@@ -90,11 +95,11 @@ function CadastroCategoria() {
                         />
                     </label> */}
 
-                </div>
+                {/* </div> */}
 
-                <button>
+                <Button>
                     Cadastrar
-          </button>
+                </Button>
             </form>
 
             <ul>
