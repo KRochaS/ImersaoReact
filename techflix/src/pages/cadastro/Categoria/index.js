@@ -58,7 +58,7 @@ function CadastroCategoria() {
         // }, 4 * 1000)
 
 
-
+        // "server": "json-server --watch db.json --port 8080",
         const URL = 'http://localhost:8080/categorias';
 
         fetch(URL).then(async (response) => {
