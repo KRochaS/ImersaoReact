@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PageDefault from '../../../components/PageDefault'
 import { Link } from 'react-router-dom';
 import FormField from '../../../components/Carousel/components/FormField';
@@ -21,17 +21,53 @@ function CadastroCategoria() {
     function setValue(chave, valor) {
         // chave: nome, descricao, bla, bli
         setValues({
-          ...values,
-          [chave]: valor, // nome: 'valor'
+            ...values,
+            [chave]: valor, // nome: 'valor'
         })
-      }
-      
+    }
+
     function handleChange(infosDoEvento) {
         setValue(
-          infosDoEvento.target.getAttribute('name'),
-          infosDoEvento.target.value
+            infosDoEvento.target.getAttribute('name'),
+            infosDoEvento.target.value
         );
-      }
+    }
+
+
+
+    useEffect(() => {
+
+        // setTimeout(() => {
+
+        //     setCategorias([
+        //         ...categorias,
+        //         {
+        //             id: 1,
+        //             nome: 'Front End',
+        //             descricao: 'Descrição front',
+        //             cor: '#cb1ff',
+        //         },
+        //         {
+        //             id: 2,
+        //             nome: 'Back End',
+        //             descricao: 'Descrição back',
+        //             cor: '#cb1ff',
+        //         },
+
+        //     ]);
+        // }, 4 * 1000)
+
+
+
+        const URL = 'http://localhost:8080/categorias';
+
+        fetch(URL).then(async (response) => {
+            const resp = await response.json();
+            setCategorias([
+                ...resp,
+            ]);
+        });
+    }, []);
 
 
     return (
@@ -72,7 +108,7 @@ function CadastroCategoria() {
                     name="cor" />
 
                 {/* <div> */}
-                    {/* 
+                {/* 
 
                     <label>
                         Descrição
@@ -85,7 +121,7 @@ function CadastroCategoria() {
                     </label> */}
 
 
-                    {/* <label>
+                {/* <label>
                         Cor
             <input
                             type="color"
@@ -101,6 +137,12 @@ function CadastroCategoria() {
                     Cadastrar
                 </Button>
             </form>
+
+            {categorias.length === 0 && (
+                <div>
+                    Loading...
+                </div>
+            )}
 
             <ul>
                 {categorias.map((categoria, indice) => {
