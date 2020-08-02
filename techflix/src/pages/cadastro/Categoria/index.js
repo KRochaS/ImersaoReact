@@ -59,7 +59,7 @@ function CadastroCategoria() {
 
 
         // "server": "json-server --watch db.json --port 8080",
-        const URL = 'http://localhost:8080/categorias';
+        const URL = window.location.hostname.includes('localhost') ? 'http://localhost:8080/categorias' : 'https://techflix-krochas.herokuapp.com/categorias';
 
         fetch(URL).then(async (response) => {
             const resp = await response.json();
