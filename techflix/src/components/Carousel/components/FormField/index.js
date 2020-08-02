@@ -33,6 +33,30 @@ Label.Text = styled.span`
 `;
 
 const Input = styled.input`
+
+
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+  
+    width: 100%
+  
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  
+    width: 100%
+  
+}
   background: #53585D;
   color: #F5F5F5;
   display: block;
