@@ -94,8 +94,8 @@ function FormField({
 }
 
 FormField.defaultProps = {
-  type: 'text',
-  value: '',
+  type: '',
+  value: '',
 };
 
 FormField.propTypes = {
